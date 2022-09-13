@@ -1,6 +1,6 @@
 tilebelt-wgs84
 ====
-Simple tile utilities for [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326). Inspired by [tilebelt](https://github.com/mapbox/tilebelt) which is web mercator (EPSG:3857).
+Simple tile utilities for [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326). Inspired by [tilebelt](https://github.com/mapbox/tilebelt) which is for web mercator (EPSG:3857).
 
 ## Install
 
