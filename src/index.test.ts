@@ -261,14 +261,14 @@ describe('tileToGeoJSON', () => {
     [
       [0, 0, 0], 
       { 
-        type: "Polygon", 
+        type: 'Polygon', 
         coordinates: [[[-180, 90], [-180, -90], [0, -90], [0, 90], [-180, 90]]] 
       }
     ],
     [
       [5, 4, 4], 
       { 
-        type: "Polygon", 
+        type: 'Polygon', 
         coordinates: [[[-123.75, 45], [-123.75, 33.75], [-112.5, 33.75], [-112.5, 45], [-123.75, 45]]] 
       }
     ],

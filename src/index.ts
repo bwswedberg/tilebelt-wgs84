@@ -163,11 +163,12 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
  export const tileToQuadkey = (tile: number[]) => {
   let quadkey = '';
   let _tile: number[] | undefined = tile;
-  do {
+  while (_tile) {
     const [x, y] = _tile;
     const zKey = x % 2 ? (y % 2 ? 3 : 1) : (y % 2 ? 2 : 0);
     quadkey = zKey + quadkey;
-  } while (_tile = getParent(_tile));
+    _tile = getParent(_tile);
+  }
   return quadkey;
 };
 
@@ -250,7 +251,7 @@ export const tileToBBox = ([x, y, z]: number[]): number[] => {
 export const tileToGeoJSON = (tile: number[]) => {
   const bbox = tileToBBox(tile);
   return {
-    type: "Polygon",
+    type: 'Polygon',
     coordinates: [[
       [bbox[0], bbox[3]],
       [bbox[0], bbox[1]],
