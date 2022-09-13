@@ -28,7 +28,7 @@ function | description
 ---|---
 tileToGeoJSON(tile) | Get a geojson representation of a tile
 tileToBBox(tile) | Get the bbox of a tile
-bboxToTiles(bbox, z) | Gets tiles needed to cover a bbox
+bboxToTiles(bbox, zoom) | Gets tiles needed to cover a bbox
 getChildren(tile) | Get the 4 tiles one zoom level higher (2 tiles at zoom 0)
 getParent(tile) | Get the tile one zoom level lower
 getSiblings(tile) | Get the 3 sibling tiles for a tile (1 sibling at zoom 0)
@@ -46,7 +46,8 @@ function | description
 normalizeLng(number) | Translate longitude to left and scale so that -180 is 0 and 180 is 1
 normalizeLat(number) | Translate latitude to the top and scale so that -90 is 1 and 90 is 0
 getExtent(zoom) | Get the total x (columns) and y (rows) tiles at given the zoom level
-intersectBboxes(bbox, bbox) | Get the intersection of two boxes as a bbox
+bboxesIntersect | Checks if two bboxes intersect
+intersectBboxes(bbox, bbox) | Get the intersection of two bboxes
 
 ## Tests
 

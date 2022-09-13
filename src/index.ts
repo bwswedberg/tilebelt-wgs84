@@ -262,36 +262,37 @@ export const tileToGeoJSON = (tile: number[]) => {
   };
 };
 
+/**
+ * Checks if two bboxes intersect
+ * 
+ * See https://gamedev.stackexchange.com/a/913
+ * 
+ * @param bboxA [xmin, ymin, xmax, ymax] 
+ * @param bboxB [xmin, ymin, xmax, ymax] 
+ * @returns 
+ */
+export const bboxesIntersect = (bboxA: number[], bboxB: number[]): boolean => !(
+  bboxA[2] < bboxB[0] // a is left of b
+  || bboxA[0] > bboxB[2] // a is right of b
+  || bboxA[3] < bboxB[1] // a is below of b
+  || bboxA[1] > bboxB[3] // a is above of b
+);
 
 /**
- * Get the intersection of two boxes as a bbox
+ * Get the intersection of two bboxes
  * 
- * @param a bbox as [xmin, ymin, xmax, ymax]
- * @param b bbox as [xmin, ymin, xmax, ymax]
- * @returns The intersection of `a` and `b` as [xmin, ymin, xmax, ymax] or undefined when disjoint
+ * @param bboxA [xmin, ymin, xmax, ymax]
+ * @param bboxB [xmin, ymin, xmax, ymax]
+ * @returns [xmin, ymin, xmax, ymax] or undefined when disjoint
  */
- export const intersectBboxes = (a: number[], b: number[]): number[] | undefined => {
-  const xIntersects =
-    (a[0] <= b[0] && b[0] <= a[2])
-    || (a[0] <= b[2] && b[2] <= a[2])
-    || (b[0] <= a[0] && a[0] <= b[2])
-    || (b[0] <= a[2] && a[2] <= b[2]);
-
-  if (!xIntersects) return;
-
-  const yIntersects = 
-    (a[1] <= b[1] && b[1] <= a[3])
-    || (a[1] <= b[3] && b[3] <= a[3])
-    || (b[1] <= a[1] && a[1] <= b[3])
-    || (b[1] <= a[3] && a[3] <= b[3]);
-
-  if (!yIntersects) return;
+ export const intersectBboxes = (bboxA: number[], bboxB: number[]): number[] | undefined => {
+  if (!bboxesIntersect(bboxA, bboxB)) return;
 
   // find shared area
-  const xMin = Math.max(a[0], b[0]);
-  const xMax = Math.min(a[2], b[2]);
-  const yMin = Math.max(a[1], b[1]);
-  const yMax = Math.min(a[3], b[3]);
-
-  return [xMin, yMin, xMax, yMax];
+  return [
+    Math.max(bboxA[0], bboxB[0]), 
+    Math.max(bboxA[1], bboxB[1]), 
+    Math.min(bboxA[2], bboxB[2]), 
+    Math.min(bboxA[3], bboxB[3])
+  ];
 };

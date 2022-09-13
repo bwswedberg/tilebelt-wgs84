@@ -278,16 +278,54 @@ describe('tileToGeoJSON', () => {
   });
 });
 
+describe('bboxesIntersect', () => {
+  test.each<[string, number[], number[]]>([
+    ['a left b', [0, 0, 2, 1], [1, 0, 3, 1]],
+    ['a right b', [1, 0, 3, 1], [0, 0, 2, 1]],
+    ['a top b', [0, 0, 1, 2], [0, 1, 1, 3]],
+    ['a bottom b', [0, 1, 1, 3], [0, 0, 1, 2]],
+    ['a contains b', [0, 0, 3, 3], [1, 1, 2, 2]],
+    ['a within b', [1, 1, 2, 2], [0, 0, 3, 3]],
+    ['a left b (touch)', [0, 0, 1, 1], [1, 0, 2, 1]],
+    ['a right b (touch)', [1, 0, 2, 1], [0, 0, 1, 1]],
+    ['a top b (touch)', [0, 0, 1, 1], [0, 1, 1, 2]],
+    ['a bottom b (touch)', [0, 1, 1, 2], [0, 0, 1, 1]],
+  ])('should be truthy when %s', (label, a, b) => {
+    const output = tileService.bboxesIntersect(a, b);
+    expect(output).toBe(true);
+  });
+
+  test.each<[string, number[], number[]]>([
+    ['a left b', [0, 0, 1, 1], [2, 0, 3, 1]],
+    ['a right b', [2, 0, 3, 1], [0, 0, 1, 1]],
+    ['a top b', [0, 0, 1, 1], [0, 2, 1, 3]],
+    ['a bottom b', [0, 2, 1, 3], [0, 0, 1, 1]],
+  ])('should falsey when %s', (label, a, b) => {
+    const output = tileService.bboxesIntersect(a, b);
+    expect(output).toBe(false);
+  });
+});
+
 describe('intersectBboxes', () => {
-  test.each<[string, number[], number[], number[] | undefined]>([
-    ['a before b', [0, 0, 2, 2], [1, 1, 3, 3], [1, 1, 2, 2]],
-    ['a after b', [1, 1, 3, 3], [0, 0, 2, 2], [1, 1, 2, 2]],
-    ['a contains b', [0, 0, 4, 4], [1, 1, 2, 2], [1, 1, 2, 2]],
-    ['a within b', [1, 1, 2, 2], [0, 0, 4, 4], [1, 1, 2, 2]],
-    ['a disjoint b (before)', [0, 0, 1, 1], [2, 2, 3, 3], undefined],
-    ['a disjoint b (after)', [2, 2, 3, 3], [0, 0, 1, 1], undefined],
+  test.each<[string, number[], number[], number[]]>([
+    ['a left b', [0, 0, 2, 1], [1, 0, 3, 1], [1, 0, 2, 1]],
+    ['a right b', [1, 0, 3, 1], [0, 0, 2, 1], [1, 0, 2, 1]],
+    ['a top b', [0, 0, 1, 2], [0, 1, 1, 3], [0, 1, 1, 2]],
+    ['a bottom b', [0, 1, 1, 3], [0, 0, 1, 2], [0, 1, 1, 2]],
+    ['a contains b', [0, 0, 3, 3], [1, 1, 2, 2], [1, 1, 2, 2]],
+    ['a within b', [1, 1, 2, 2], [0, 0, 3, 3], [1, 1, 2, 2]],
   ])('should intersect when %s', (label, a, b, expectedBbox) => {
     const output = tileService.intersectBboxes(a, b);
     expect(output).toStrictEqual(expectedBbox);
-  })
+  });
+
+  test.each<[string, number[], number[]]>([
+    ['a left b', [0, 0, 1, 1], [2, 0, 3, 1]],
+    ['a right b', [2, 0, 3, 1], [0, 0, 1, 1]],
+    ['a top b', [0, 0, 1, 1], [0, 2, 1, 3]],
+    ['a bottom b', [0, 2, 1, 3], [0, 0, 1, 1]],
+  ])('should return intersection of undefined when %s', (label, a, b) => {
+    const output = tileService.intersectBboxes(a, b);
+    expect(output).toBeUndefined();
+  });
 });
