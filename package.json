@@ -12,6 +12,10 @@
     "build": "webpack",
     "clean": "rm -r dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bwswedberg/tilebelt-wgs84"
+  },
   "keywords": [
     "map",
     "tile",

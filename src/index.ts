@@ -98,10 +98,10 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
 
 
 /**
- * Get the 3 sibling tiles for a tile (1 sibiling at zoom 0)
+ * Get the 3 sibling tiles for a tile (1 sibling at zoom 0)
  * 
  * @param tile [x, y, z]
- * @returns sibling tiles
+ * @returns tiles [[x, y, z], ...]
  */
  export const getSiblings = (tile: number[]) => {
   // Handle zoom 0 edge case. Zoom 0 is a 2x1 matrix
