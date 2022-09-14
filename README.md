@@ -38,13 +38,9 @@ tileToQuadkey(tile) | Get the quadkey for a tile
 quadkeyToTile(quadkey) | Get the tile for a quadkey
 pointToTile(lng, lat, zoom) | Get the tile for a point at a specified zoom level
 pointToTileFraction(lng, lat, zoom) | Get the precise fractional tile location for a point at a zoom level
-
-Additional utility functions
-
-function | description
----|---
+**Additional utility functions**
 normalizeLng(number) | Translate longitude to left and scale so that -180 is 0 and 180 is 1
-normalizeLat(number) | Translate latitude to the top and scale so that -90 is 1 and 90 is 0
+normalizeLat(number) | Translate latitude to the top and scale so that 90 is 0 and -90 is 1
 getExtent(zoom) | Get the total x (columns) and y (rows) tiles at given the zoom level
 bboxesIntersect | Checks if two bboxes intersect
 intersectBboxes(bbox, bbox) | Get the intersection of two bboxes
@@ -52,5 +48,6 @@ intersectBboxes(bbox, bbox) | Get the intersection of two bboxes
 ## Tests
 
 ```bash
-npm test
+npm run lint
+npm run test
 ```

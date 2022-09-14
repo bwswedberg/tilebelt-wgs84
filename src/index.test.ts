@@ -14,12 +14,12 @@ describe('normalizeLng', () => {
 
 describe('normalizeLat', () => {
   test.each([
-    [-90, 1],
-    [0, 0.5],
     [90, 0],
+    [0, 0.5],
+    [-90, 1],
     [45, 0.25]
-  ])('should normalize when %s', (lng, expectedValue) => {
-    const output = tileService.normalizeLat(lng);
+  ])('should normalize when %s', (lat, expectedValue) => {
+    const output = tileService.normalizeLat(lat);
     expect(output).toBe(expectedValue);
   });
 });

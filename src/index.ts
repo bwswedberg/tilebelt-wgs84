@@ -9,7 +9,7 @@
 
 
  /**
-  * Translate latitude to the top and scale so that -90 is 1 and 90 is 0
+  * Translate latitude to the top and scale so that 90 is 0 and -90 is 1
   * 
   * @param lat latitude in decimal degrees
   * @returns value between 0 and 1
