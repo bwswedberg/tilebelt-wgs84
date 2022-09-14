@@ -11,6 +11,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "jest",
+    "test:ci": "jest --ci --coverage",
     "build": "webpack",
     "clean": "rm -r dist",
     "prepare": "npm run lint && npm run test && npm run clean && npm run build"
