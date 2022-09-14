@@ -4,3 +4,4 @@ dist
 .DS_Store
 package
 tilebelt-wgs84*
+coverage
