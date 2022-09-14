@@ -1,8 +1,8 @@
 tilebelt-wgs84
 ====
-![version](https://img.shields.io/github/package-json/v/bwswedberg/tilebelt-wgs84)
 ![build](https://github.com/bwswedberg/tilebelt-wgs84/actions/workflows/build.yml/badge.svg)
 [![codecov](https://codecov.io/gh/bwswedberg/tilebelt-wgs84/branch/main/graph/badge.svg?token=R9NCYUYWL1)](https://codecov.io/gh/bwswedberg/tilebelt-wgs84)
+[![npm](https://img.shields.io/npm/v/tilebelt-wgs84)](https://www.npmjs.com/package/tilebelt-wgs84)
 
 Simple tile utilities for [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326). Inspired by [tilebelt](https://github.com/mapbox/tilebelt) which is for web mercator (EPSG:3857).
 
