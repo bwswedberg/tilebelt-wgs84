@@ -1,15 +1,14 @@
 
 /**
- * Translate longitude to left and scale so that -180 is 0 and 180 is 1
+ * Convert longitude so that -180 is 0 and 180 is 1
  * 
  * @param lng longitude in decimal degrees
  * @returns value between 0 and 1
  */
  export const normalizeLng = (lng: number) => lng / 360 + 0.5;
 
-
  /**
-  * Translate latitude to the top and scale so that 90 is 0 and -90 is 1
+  * Convert latitude so that 90 is 0 and -90 is 1
   * 
   * @param lat latitude in decimal degrees
   * @returns value between 0 and 1
@@ -17,8 +16,14 @@
  export const normalizeLat = (lat: number) => -lat / 180 + 0.5;
 
 /**
- * Get the total x (columns) and y (rows) tiles at given the zoom level.
- * e.g. zoom 0 is [2, 1], zoom 1 is [4, 2], zoom 2 is [8, 4]
+ * Get the total x (columns) and y (rows) tiles at a zoom level
+ * 
+ * @example
+ * ```
+ * getExtent(0); // [2, 1]
+ * getExtent(1); // [4, 2]
+ * getExtent(2); // [8, 4]
+ * ```
  * 
  * @param z zoom
  * @returns amount of tiles
@@ -28,7 +33,6 @@
   // same as [2**(z+1), 2**(z)] but slightly faster
   return [2 << fz, 1 << fz];
 };
-
 
 /**
  * Get the precise fractional tile location for a point at a zoom level
@@ -54,7 +58,6 @@ export const pointToTileFraction = (lng: number, lat: number, z: number): number
   return [x, y, z];
 };
 
-
 /**
  * Get the tile for a point at a specified zoom level
  * 
@@ -72,7 +75,6 @@ export const pointToTile = (lng: number, lat: number, z: number): number[] => {
   ];
 };
 
-
 /**
  * Check to see if two tiles are the same
  * 
@@ -84,7 +86,6 @@ export const pointToTile = (lng: number, lat: number, z: number): number[] => {
   return ax === bx && ay === by && az === bz;
 };
 
-
 /**
  * Check to see if an array of tiles contains a tile
  * 
@@ -95,7 +96,6 @@ export const pointToTile = (lng: number, lat: number, z: number): number[] => {
 export const hasTile = (tiles: number[][], tile: number[]) => {
   return tiles.some(otherTile => tilesEqual(tile, otherTile));
 };
-
 
 /**
  * Get the 3 sibling tiles for a tile (1 sibling at zoom 0)
@@ -118,7 +118,6 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
   ].filter(sibling => !tilesEqual(sibling, tile)); // remove identity
 };
 
-
 /**
  * Get the tile one zoom level lower
  * 
@@ -133,7 +132,6 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
     z - 1
   ];
 };
-
 
 /**
  * Get the 4 tiles one zoom level higher (2 tiles at zoom 0)
@@ -152,7 +150,6 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
     [cx + 1, cy + 1, cz],
   ];
 };
-
 
 /**
  * Get the quadkey for a tile
@@ -194,7 +191,6 @@ export const hasTile = (tiles: number[][], tile: number[]) => {
   }
   return [x, y, z];
 };
-
 
 /**
  * Gets tiles needed to cover a bbox
@@ -265,7 +261,8 @@ export const tileToGeoJSON = (tile: number[]) => {
 /**
  * Checks if two bboxes intersect
  * 
- * See https://gamedev.stackexchange.com/a/913
+ * @privateRemarks
+ * See https://gamedev.stackexchange.com/a/913 for explanation on algorithm
  * 
  * @param bboxA [xmin, ymin, xmax, ymax] 
  * @param bboxB [xmin, ymin, xmax, ymax] 

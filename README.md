@@ -43,9 +43,9 @@ quadkeyToTile(quadkey) | Get the tile for a quadkey
 pointToTile(lng, lat, zoom) | Get the tile for a point at a specified zoom level
 pointToTileFraction(lng, lat, zoom) | Get the precise fractional tile location for a point at a zoom level
 **Additional utility functions**
-normalizeLng(number) | Translate longitude to left and scale so that -180 is 0 and 180 is 1
-normalizeLat(number) | Translate latitude to the top and scale so that 90 is 0 and -90 is 1
-getExtent(zoom) | Get the total x (columns) and y (rows) tiles at given the zoom level
+normalizeLng(number) | Convert longitude so that -180 is 0 and 180 is 1
+normalizeLat(number) | Convert latitude so that 90 is 0 and -90 is 1
+getExtent(zoom) | Get the total x (columns) and y (rows) tiles at a zoom level
 bboxesIntersect | Checks if two bboxes intersect
 intersectBboxes(bbox, bbox) | Get the intersection of two bboxes
 
