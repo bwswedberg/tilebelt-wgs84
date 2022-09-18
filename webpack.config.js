@@ -20,6 +20,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
     library: "tilebeltWgs84",
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
 };
