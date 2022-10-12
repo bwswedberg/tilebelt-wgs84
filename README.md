@@ -23,7 +23,7 @@ console.log(tilebelt.tileToGeoJSON(tile));
 
 // [lngMin, latMin, lngmax, latMax]
 const bbox = [-118.125, -39.375, -106.875, -28.125];
-console.log(tilebelt.bboxToTiles(bbox, 4);
+console.log(tilebelt.bboxToTiles(bbox, 4));
 ```
 
 ## API
