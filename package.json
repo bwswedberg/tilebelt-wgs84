@@ -3,6 +3,15 @@
   "version": "1.0.2",
   "description": "Simple tile utilities for WGS84 / EPSG:4326",
   "main": "dist/index.js",
+  "type": "module",
+  "exports": {
+    "node": {
+      "module": "./dist/bundle.js",
+      "require": "./dist/bundle.cjs"
+    },
+    "default": "./dist/bundle.js",
+    "script": "./dist/bundle.min.js"
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -12,7 +21,7 @@
     "lint:fix": "eslint src --fix",
     "test": "jest",
     "test:ci": "jest --ci --coverage",
-    "build": "webpack",
+    "build": "rollup -c",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run lint && npm run test:ci && npm run clean && npm run build"
   },
@@ -33,15 +42,15 @@
   },
   "homepage": "https://github.com/bwswedberg/tilebelt-wgs84",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^9.0.1",
     "@types/jest": "^29.0.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "eslint": "^8.23.1",
     "jest": "^29.0.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^29.0.0",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.8.3",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "typescript": "^4.8.3"
   }
 }
