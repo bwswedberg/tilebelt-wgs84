@@ -3,6 +3,7 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   rootDir: '.',
+  extensionsToTreatAsEsm: ['.ts'],
   coverageThreshold: {
     global: {
       branches: 100,
