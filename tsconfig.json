@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES5",
+    "moduleResolution": "NodeNext",
     "module": "ESNext",
     "declaration": true,
     "sourceMap": true,
