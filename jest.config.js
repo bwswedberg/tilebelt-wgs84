@@ -1,9 +1,9 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 export default {
   preset: 'ts-jest',
-  resolver: 'ts-jest-resolver',
   testEnvironment: 'node',
   rootDir: '.',
+  moduleDirectories: ['node_modules', 'src'],
   coverageThreshold: {
     global: {
       branches: 100,
