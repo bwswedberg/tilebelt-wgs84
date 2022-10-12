@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Simple tile utilities for WGS84 / EPSG:4326",
   "type": "module",
-  "main": "dist/bundle.cjs",
+  "main": "dist/bundle.min.js",
   "exports": {
     "node": {
       "module": "./dist/bundle.js",
