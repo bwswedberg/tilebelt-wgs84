@@ -20,7 +20,6 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
     "test": "vitest watch",
     "test:ci": "vitest run --coverage --no-cache",
     "build": "vite build"
