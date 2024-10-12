@@ -21,7 +21,7 @@ import tilebelt from "tilebelt-wgs84";
 const tile = [10, 15, 8];
 console.log(tilebelt.tileToGeoJSON(tile));
 
-// [lngMin, latMin, lngmax, latMax]
+// [lngMin, latMin, lngMax, latMax]
 const bbox = [-118.125, -39.375, -106.875, -28.125];
 console.log(tilebelt.bboxToTiles(bbox, 4));
 ```
@@ -44,11 +44,13 @@ console.log(tilebelt.bboxToTiles(bbox, 4));
 | pointToTileFraction(lng, lat, zoom) | Get the precise fractional tile location for a point at a zoom level |
 
 **Additional utility functions**
-normalizeLng(number) | Convert longitude so that -180 is 0 and 180 is 1
-normalizeLat(number) | Convert latitude so that 90 is 0 and -90 is 1
-getExtent(zoom) | Get the total x (columns) and y (rows) tiles at a zoom level
-bboxesIntersect | Checks if two bboxes intersect
-intersectBboxes(bbox, bbox) | Get the intersection of two bboxes
+| function | description |
+| --- | --- |
+| normalizeLng(number) | Convert longitude so that -180 is 0 and 180 is 1 |
+| normalizeLat(number) | Convert latitude so that 90 is 0 and -90 is 1 |
+| getExtent(zoom) | Get the total x (columns) and y (rows) tiles at a zoom level |
+| bboxesIntersect | Checks if two bboxes intersect |
+| intersectBboxes(bbox, bbox) | Get the intersection of two bboxes |
 
 ## Tests
 
