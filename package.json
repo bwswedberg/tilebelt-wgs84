@@ -6,7 +6,7 @@
   "type": "module",
   "main": "dist/tilebelt-wgs84.umd.cjs",
   "module": "dist/tilebelt-wgs84.js",
-  "types": "dist/types.d.ts",
+  "types": "dist/tilebelt-wgs84.d.ts",
   "exports": {
     ".": {
       "import": "./dist/tilebelt-wgs84.js",
