@@ -9,7 +9,8 @@ export default defineConfig({
     tsconfigPaths(),
     dts({
       include: "src",
-      exclude: ["**/*.test.ts"]
+      exclude: ["**/*.test.ts"],
+      insertTypesEntry: true,
     })
   ],
   build: {
@@ -17,8 +18,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "./src/index.ts"),
       name: "tilebeltWgs84",
-      formats: ["es", "umd"],
-      fileName: "tilebelt-wgs84"
+      formats: ["es", "umd"]
     }
   },
   test: {
